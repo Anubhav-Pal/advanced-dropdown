@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { MdOutlineCancel } from "react-icons/md";
 
 const MainComponent = () => {
     const allOptions = ["Frontend Developer", "Backend Developer", "UI/UX Designer", "Data Scientist", "Software Engineer", "Product Manager", "DevOps Engineer", "Machine Learning Engineer", "Full Stack Developer", "Cybersecurity Analyst", "Mobile App Developer", "Game Developer", "Cloud Architect", "QA Engineer", "Web Developer", "Database Administrator", "Network Engineer", "UI Developer", "UX Researcher", "System Administrator", "Software Architect", "Business Analyst", "Technical Writer", "Embedded Systems Engineer", "AI Engineer", "Blockchain Developer", "Computer Vision Engineer", "AR/VR Developer", "IT Support Specialist", "Data Analyst"];
@@ -7,7 +8,7 @@ const MainComponent = () => {
     const [optionArray, setOptionArray] = useState(allOptions);
     const [inputChange, setInputChange] = useState("");
     const [clickedOptions, setClickedOptions] = useState([]);
-    console.log(clickedOptions);
+    // console.log(clickedOptions);
 
 
     useEffect(() => {
@@ -26,15 +27,20 @@ const MainComponent = () => {
     return (
         <div className='flex w-1/3 flex-col gap-2 p-2'>
 
-            <div className='bg-[#F6F6F6] flex flex-wrap border-[1px] border-[#000000] border-opacity-50 rounded-md p-2'>
+            <div className='bg-[#F6F6F6] flex flex-wrap border-[1px] border-[#000000] border-opacity-50 rounded-md p-2 gap-1'>
                 {clickedOptions.map((clickedOption) => (
-                    <div className='bg-[#F6F6F6]  flex items-center justify-between text-[12px] font-semibold rounded-md text-gray-500 border-[1px] border-[#000000] border-opacity-20 p-1'>
-                        {clickedOption}
+                    <div className='bg-[#F6F6F6]  flex items-center justify-between font-semibold rounded-md text-gray-500 border-[1px] border-[#000000] border-opacity-20 p-1 gap-1'>
+                        <div className='text-[12px] ' >
+                            {clickedOption}
+                        </div>  
+                        <div className='flex items-center opacity-80'>
+                            <button onClick={() => setClickedOptions((prevClickedOption) => prevClickedOption.filter(option => option !== clickedOption))}><MdOutlineCancel /></button>
+                        </div>
                     </div>
                 ))}
 
                 {/* input field */}
-                <div className='bg-[#F6F6F6] rounded-md'>
+                <div className='bg-[#F6F6F6] rounded-md w-full'>
                     <input onChange={(e) => setInputChange(e.target.value)} className='bg-[#F6F6F6] rounded-md p-1 w-full outline-none' type="text" />
                 </div>
             </div>
