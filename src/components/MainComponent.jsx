@@ -51,7 +51,7 @@ const MainComponent = () => {
 
                 {/* input field */}
                 <div className='bg-[#F6F6F6] rounded-md w-full'>
-                    <input onChange={(e) => setInputChange(e.target.value)} className='bg-[#F6F6F6] rounded-md p-1 w-full outline-none placeholder:text-sm' type="text" placeholder='Enter your domain' />
+                    <input onChange={(e) => setInputChange(e.target.value)} className='bg-[#F6F6F6] rounded-md p-1 w-full outline-none placeholder:text-sm' type="text" placeholder='Enter/select your domain' />
                 </div>
             </div>
             <div className='flex flex-col gap-1 items-center bg-[#F6F6F6] justify-between rounded-md max-h-56 scroll-m-0 overflow-y-auto
