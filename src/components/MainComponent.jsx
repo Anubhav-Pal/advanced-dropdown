@@ -32,7 +32,7 @@ const MainComponent = () => {
                     <div className='bg-[#F6F6F6]  flex items-center justify-between font-semibold rounded-md text-gray-500 border-[1px] border-[#000000] border-opacity-20 p-1 gap-1'>
                         <div className='text-[12px] ' >
                             {clickedOption}
-                        </div>  
+                        </div>
                         <div className='flex items-center opacity-50 hover:opacity-80 transition-all'>
                             <button onClick={() => setClickedOptions((prevClickedOption) => prevClickedOption.filter(option => option !== clickedOption))}><MdOutlineCancel /></button>
                         </div>
@@ -46,9 +46,24 @@ const MainComponent = () => {
             </div>
             <div className='flex flex-col gap-1 items-center bg-[#F6F6F6] justify-between rounded-md max-h-56 scroll-m-0 overflow-y-auto
             scrollbar'>
-                {optionArray.map((option, index) => (
-                    <div onClick={() => setClickedOptions([...clickedOptions, option])} className='bg-[#F6F6F6] border-b-[1px] rounded- w-full cursor-pointer text-sm p-2 text-gray-500 hover:text-gray-700 transition-all' key={index}>{option}</div>
-                ))
+                {optionArray.map((option, index) => {
+
+                    //calculates the index at which the input occurs in the option
+                    const indexOfInputInOption = option.toLowerCase().indexOf(inputChange.toLowerCase());
+                    return (
+                        <div onClick={() => setClickedOptions([...clickedOptions, option])} className='bg-[#F6F6F6] border-b-[1px] rounded- w-full cursor-pointer text-sm p-2 text-gray-500 hover:text-gray-700 transition-all' key={index}>
+                            {indexOfInputInOption !== -1 ?
+                                (<>
+                                    {option.slice(0, indexOfInputInOption)}
+                                    <span className='font-bold'>{inputChange}</span>
+                                    {option.slice(indexOfInputInOption + inputChange.length)}
+                                </>)
+
+                                : (option)
+                            }
+                        </div>
+                    );
+                })
                 }
             </div>
         </div>
