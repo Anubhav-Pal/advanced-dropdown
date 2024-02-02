@@ -3,7 +3,7 @@ import MainComponent from './components/mainComponent'
 
 const App = () => {
   return (
-    <div className='h-screen flex items-center rounded-md justify-center'><MainComponent/></div>
+    <div className='h-screen flex rounded-md justify-center'><MainComponent/></div>
   )
 }
 

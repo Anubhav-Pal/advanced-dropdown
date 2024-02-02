@@ -35,11 +35,11 @@ const MainComponent = () => {
 
 
     return (
-        <div className='flex w-1/3 flex-col gap-2 p-2'>
+        <div className='flex w-4/5 sm:1/2 lg:w-4/12 flex-col gap-2 p-2 mt-20 sm:mt-40'>
 
             <div className='bg-[#F6F6F6] flex flex-wrap border-[1px] border-[#000000] border-opacity-50 rounded-md p-2 gap-1'>
-                {clickedOptions.map((clickedOption) => (
-                    <div className='bg-[#F6F6F6]  flex items-center justify-between font-semibold rounded-md text-gray-500 border-[1px] border-[#000000] border-opacity-20 p-1 gap-1'>
+                {clickedOptions.map((clickedOption, index) => (
+                    <div className='bg-[#F6F6F6]  flex items-center justify-between font-semibold rounded-md text-gray-500 border-[1px] border-[#000000] border-opacity-20 p-1 gap-1' key={index}>
                         <div className='text-[12px] ' >
                             {clickedOption}
                         </div>
