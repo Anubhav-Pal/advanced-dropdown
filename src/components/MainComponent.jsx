@@ -4,12 +4,9 @@ import { MdOutlineCancel } from "react-icons/md";
 const MainComponent = () => {
     const allOptions = ["Frontend Developer", "Backend Developer", "UI/UX Designer", "Data Scientist", "Software Engineer", "Product Manager", "DevOps Engineer", "Machine Learning Engineer", "Full Stack Developer", "Cybersecurity Analyst", "Mobile App Developer", "Game Developer", "Cloud Architect", "QA Engineer", "Web Developer", "Database Administrator", "Network Engineer", "UI Developer", "UX Researcher", "System Administrator", "Software Architect", "Business Analyst", "Technical Writer", "Embedded Systems Engineer", "AI Engineer", "Blockchain Developer", "Computer Vision Engineer", "AR/VR Developer", "IT Support Specialist", "Data Analyst"];
 
-
     const [optionArray, setOptionArray] = useState(allOptions);
     const [inputChange, setInputChange] = useState("");
     const [clickedOptions, setClickedOptions] = useState([]);
-    // console.log(clickedOptions);
-
 
     useEffect(() => {
         //filtered all the options similar to the input given by user
@@ -22,6 +19,19 @@ const MainComponent = () => {
             setOptionArray(filteredOptionsArray);
         }
     }, [inputChange]);
+
+    useEffect(() => {
+        //this is the array which does not have the options that have been clicked by the user and are now in the clickedOptions array
+        const updatedOptionArray = allOptions.filter(option => !clickedOptions.includes(option))
+
+        if (clickedOptions.length === 0) {
+            setOptionArray(allOptions);
+        }
+        else {
+            setOptionArray(updatedOptionArray);
+        }
+
+    }, [clickedOptions])
 
 
     return (
@@ -58,7 +68,6 @@ const MainComponent = () => {
                                     <span className='font-bold'>{inputChange}</span>
                                     {option.slice(indexOfInputInOption + inputChange.length)}
                                 </>)
-
                                 : (option)
                             }
                         </div>
@@ -67,7 +76,6 @@ const MainComponent = () => {
                 }
             </div>
         </div>
-
     )
 }
 
