@@ -33,7 +33,7 @@ const MainComponent = () => {
                         <div className='text-[12px] ' >
                             {clickedOption}
                         </div>  
-                        <div className='flex items-center opacity-80'>
+                        <div className='flex items-center opacity-50 hover:opacity-80 transition-all'>
                             <button onClick={() => setClickedOptions((prevClickedOption) => prevClickedOption.filter(option => option !== clickedOption))}><MdOutlineCancel /></button>
                         </div>
                     </div>
@@ -41,13 +41,13 @@ const MainComponent = () => {
 
                 {/* input field */}
                 <div className='bg-[#F6F6F6] rounded-md w-full'>
-                    <input onChange={(e) => setInputChange(e.target.value)} className='bg-[#F6F6F6] rounded-md p-1 w-full outline-none' type="text" />
+                    <input onChange={(e) => setInputChange(e.target.value)} className='bg-[#F6F6F6] rounded-md p-1 w-full outline-none placeholder:text-sm' type="text" placeholder='Enter your domain' />
                 </div>
             </div>
             <div className='flex flex-col gap-1 items-center bg-[#F6F6F6] justify-between rounded-md max-h-56 scroll-m-0 overflow-y-auto
             scrollbar'>
                 {optionArray.map((option, index) => (
-                    <div onClick={() => setClickedOptions([...clickedOptions, option])} className='bg-[#F6F6F6] border-b-[1px] rounded- w-full p-1 cursor-pointer' key={index}>{option}</div>
+                    <div onClick={() => setClickedOptions([...clickedOptions, option])} className='bg-[#F6F6F6] border-b-[1px] rounded- w-full cursor-pointer text-sm p-2 text-gray-500 hover:text-gray-700 transition-all' key={index}>{option}</div>
                 ))
                 }
             </div>
